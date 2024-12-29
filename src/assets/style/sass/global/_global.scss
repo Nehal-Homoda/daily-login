@@ -1,0 +1,202 @@
+@use './../abstracts' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap');
+// font-family: 'El Messiri', sans-serif;
+
+body {
+    background-color:transparent;
+}
+
+#app {
+    width: 100%;
+    height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'El Messiri', sans-serif;
+}
+
+.clickable {
+    transition: all 150ms ease-in-out;
+
+    &:active {
+        transform: scale(0.9);
+    }
+}
+.truncate {
+    display: -webkit-box !important;
+    -webkit-line-clamp: 1 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+
+    @for $i from 1 through 5 {
+
+        &.line-#{$i} {
+            -webkit-line-clamp: $i !important;
+        }
+    }
+}
+.appbar {
+    width: 100%;
+    height: 65px;
+    background-color: #fff;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    box-shadow: 0 0 5px #00000050;
+    position: fixed;
+    top: 0;
+
+    .close-window {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 25px;
+        right: 2%;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        opacity: 0.6;
+        // background: url('./../../img/icons/icon-arrow-right-dark.png') no-repeat;
+        // background-size: contain;
+    }
+}
+
+.custom-loading-bar {
+    width: 100%;
+    height: 5px;
+    background-color: #ffffff50;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+
+    span {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #ffffff;
+        border-radius: 2em;
+        animation: customLoadingBar 1s ease-in-out infinite both;
+    }
+}
+
+.empty-box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+        animation: scale 300ms ease-in-out;
+    }
+}
+
+.overlay {
+    width: 100%;
+    height: 100vh;
+    background-color: #00000060;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.floating-btn {
+    width: 40px;
+    height: 30px;
+    position: fixed;
+    top: 15%;
+    left: 0;
+    z-index: 55;
+    border: none;
+    outline: none;
+    border-radius: 0 2em 2em 0;
+    background-color: $primary-dark;
+    box-shadow: 0 0 0 1px $gold;
+
+    &.trending-btn {
+        top: calc(15% + 45px);
+        // background: url('../img/trending-btn-bg.png') no-repeat;
+        // background-size: contain;
+    }
+
+    &.rules-btn {
+        // background: url('./../../img/rules-btn-bg.png') no-repeat;
+        // background-size: contain;
+    }
+
+    img {
+        width: 65%;
+        height: 65%;
+        object-fit: contain;
+    }
+}
+
+.rules-img {
+    width: 80%;
+    max-height: 90vh;
+    display: block;
+    object-fit: contain;
+}
+
+.type-switcher {
+    width: 225px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    margin: 25px auto;
+    direction: rtl;
+    box-shadow: inset 0 0 0 2px $primary;
+    border-radius: 2em;
+
+    span {
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        background-color: $primary;
+        box-shadow: 0 0 0 1px $primary;
+        border-radius: 2em;
+        transition: all 150ms ease-in-out;
+
+        &.senders {
+            transform: translateX(100%);
+        }
+
+        &.receivers {
+            transform: translateX(0);
+        }
+    }
+
+
+    button {
+        width: 50%;
+        height: 100%;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: $primary;
+        font-weight: 700;
+        font-size: 18px;
+        position: relative;
+
+        &.active {
+            color: #fff;
+        }
+    }
+
+}
